@@ -3,10 +3,10 @@ package com.andrius.blte.test;
 import android.content.Intent;
 import android.test.AndroidTestCase;
 
-import com.andrius.blte.Bracelet;
-import com.andrius.blte.ResourceNotUsedException;
-import com.andrius.blte.ResourceUnavailableException;
-import com.andrius.blte.Resources;
+import com.andrius.btle.Bracelet;
+import com.andrius.btle.ResourceNotUsedException;
+import com.andrius.btle.ResourceUnavailableException;
+import com.andrius.btle.Resources;
 
 public class ResourcesTest extends AndroidTestCase {
 	private Resources resources;

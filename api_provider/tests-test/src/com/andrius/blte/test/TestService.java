@@ -1,6 +1,6 @@
 package com.andrius.blte.test;
 
-import com.andrius.blte.Bracelet;
+import com.andrius.btle.Bracelet;
 
 import android.app.Service;
 import android.content.Intent;

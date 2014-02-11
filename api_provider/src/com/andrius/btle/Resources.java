@@ -1,4 +1,4 @@
-package com.andrius.blte;
+package com.andrius.btle;
 
 import android.content.Context;
 import android.content.Intent;

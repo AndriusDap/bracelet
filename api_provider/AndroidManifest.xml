@@ -7,16 +7,27 @@
     <uses-sdk
         android:minSdkVersion="18"
         android:targetSdkVersion="19" />
-    <uses-feature android:name="android.hardware.bluetooth_le" android:required="true"/>
-	<uses-permission android:name="android.permission.BLUETOOTH"/>
-	<uses-permission android:name="android.permission.BLUETOOTH_ADMIN"/>
+
+    <uses-feature
+        android:name="android.hardware.bluetooth_le"
+        android:required="true" />
+
+    <uses-permission android:name="android.permission.BLUETOOTH" />
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+
+    <permission
+        android:name="com.andrius.permission.LED"
+        android:label="led_permission"
+        android:protectionLevel="dangerous" >
+    </permission>
+
     <application
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name="com.andrius.blte.MainActivity"
+            android:name="com.andrius.btle.MainActivity"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -24,6 +35,17 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <service android:name="com.andrius.btle.Bracelet" />
+        <service android:name="com.andrius.btle.RegistrationService" />
+
+        <receiver
+            android:name="com.andrius.LedBroadcastReceiver"
+            android:permission="com.andrius.permission.LED" >
+            <intent-filter>
+                <action android:name="com.andrius.bracelet.LED" />
+            </intent-filter>
+        </receiver>
     </application>
 
 </manifest>
