@@ -36,8 +36,14 @@
             </intent-filter>
         </activity>
 
-        <service android:name="com.andrius.btle.Bracelet" />
-        <service android:name="com.andrius.btle.RegistrationService" />
+        <service
+            android:name="com.andrius.btle.Bracelet"
+            android:process=":BraceletProcess" />
+        <service android:name="com.andrius.btle.RegistrationService" >
+            <intent-filter>
+                <action android:name="com.andrius.btle.IRegistrationService" />
+            </intent-filter>
+        </service>
 
         <receiver
             android:name="com.andrius.LedBroadcastReceiver"

@@ -5,9 +5,11 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.IBinder;
 import android.os.RemoteException;
+import android.util.Log;
 
 public class RegistrationService extends Service {
 	private Resources mResources;
+	private static String TAG = "RegistrationService";
 
 	@Override
 	public void onCreate() {
@@ -25,6 +27,7 @@ public class RegistrationService extends Service {
 		@Override
 		public boolean RegisterClick(String Package, int ButtonId, int ClickType) throws RemoteException {
 			try {
+				Log.v(TAG, "RegisterClick called");
 				mResources.registerButton(Package, ButtonId, ClickType);
 			} catch (ResourceUnavailableException e) {
 				return false;

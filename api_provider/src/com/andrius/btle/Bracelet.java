@@ -1,5 +1,9 @@
 package com.andrius.btle;
 
+import com.andrius.blte.R;
+
+import android.app.Notification;
+import android.app.NotificationManager;
 import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
@@ -31,6 +35,10 @@ public class Bracelet extends Service {
 	public void onCreate() {
 		mContext = getBaseContext();
 		mResources = new Resources(mContext);
+		
+		Notification processNotification = new Notification.Builder(mContext).setSmallIcon(R.drawable.ic_launcher).setContentText("Bracelet service notification").build();
+		processNotification.number = 5;
+		startForeground(42, processNotification);
 	};
 
 	@Override
@@ -41,10 +49,12 @@ public class Bracelet extends Service {
 	@Override
 	public int onStartCommand(Intent intent, int flags, int startId) {
 		Bundle extras = intent.getExtras();
-		int led = extras.getInt("LedID");
-		int color = extras.getInt("Color");
-		if (led != 0 && color != 0) {
-			setLed(led, color);
+		if(extras != null) {
+			int led = extras.getInt("LedID");
+			int color = extras.getInt("Color");
+			if (led != 0 && color != 0) {
+				setLed(led, color);
+			}
 		}
 		return Service.START_STICKY;
 	}
@@ -52,6 +62,7 @@ public class Bracelet extends Service {
 	private void setLed(int led, int color) {
 		Log.v(TAG, "Led " + led + " is glowing");
 	}
+
 
 	@SuppressWarnings("unused")
 	private void onClick(int buttonId, int clickType) {
